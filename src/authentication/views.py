@@ -14,9 +14,8 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
-                message = f'Hello {user.username}! Welcome back.'
-            else:
-                message = 'Login failed!'
+                return redirect('blog:home')
+            message = 'Login failed!'
 
     context = {'form': form, 'message': message}
 
