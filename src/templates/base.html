@@ -9,5 +9,8 @@
     {% block content %}
     {# page content goes here ... #}
     {% endblock content %}
+    {% if user.is_authenticated %}
+        <a href="{% url 'authentication:logout' %}"><button>Logout</button></a>
+    {% endif %}
 </body>
 </html>
