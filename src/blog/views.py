@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import View
 
-@login_required
-def home_view(request):
-    return render(request, 'blog/home.html')
+class HomeView(LoginRequiredMixin, View):
+    template_name = 'blog/home.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
