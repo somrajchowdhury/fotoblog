@@ -31,6 +31,6 @@ class LoginView(View):
 class LogoutView(View):
 
     @staticmethod
-    def get(self, request):
+    def get(request):
         logout(request)
-        return render('authentication:login')
+        return redirect('authentication:login')
