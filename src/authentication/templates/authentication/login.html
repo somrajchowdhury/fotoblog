@@ -1,12 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p>{{ message }}</p>
-{% if not user.is_authenticated %}
-    <form method="POST" action="">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Login</button>
-    </form>
-{% endif %}
+<form method="POST" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
 {% endblock content %}
