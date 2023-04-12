@@ -9,7 +9,7 @@ class HomeView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, self.template_name)
 
-class PhotoUploadView(View):
+class PhotoUploadView(LoginRequiredMixin, View):
     form_class = PhotoForm
     template_name = 'blog/photo_upload.html'
 
