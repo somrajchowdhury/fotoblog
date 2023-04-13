@@ -134,3 +134,6 @@ LOGIN_URL = 'authentication:login'
 LOGIN_REDIRECT_URL = 'blog:home'
 # for generic logout view redirect
 LOGOUT_REDIRECT_URL = LOGIN_URL
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR.joinpath('uploads')
