@@ -1,13 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
+from django.views.generic.list import ListView
 from .forms import PhotoForm
+from .models import Photo
 
-class HomeView(LoginRequiredMixin, View):
+class HomeView(LoginRequiredMixin, ListView):
+    model = Photo
+    context_object_name = 'photos'
     template_name = 'blog/home.html'
-
-    def get(self, request):
-        return render(request, self.template_name)
 
 class PhotoUploadView(LoginRequiredMixin, View):
     form_class = PhotoForm
