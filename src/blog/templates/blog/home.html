@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<p>Hello {{ user.username }}! Welcome back.</p>
+<p class="welcome-text">Hello {{ user.username }}! Welcome back.</p>
 <h3>Photos</h3>
-{% for photo in photos %}
-    <img src="{{ photo.image.url }}">
-    <p>{{ photo.caption }}</p>
-{% endfor %}
+<div class="grid">
+    {% for photo in photos %}
+    <img src="{{ photo.image.url }}" title="{{ photo.caption }}">
+    {% endfor %}
+</div>
 {% endblock content %}
