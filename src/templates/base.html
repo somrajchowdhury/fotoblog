@@ -5,14 +5,36 @@
     <meta charset="UTF-8">
     <title>FotoBlog</title>
     <link rel="icon" href="{% static 'favicon.png' %}" />
+    {# Masonry layout CSS #}
+    <link rel="stylesheet" href="https://unpkg.com/flexmasonry/dist/flexmasonry.css">
+    {# Custom CSS #}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {# Google font CSS #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
 </head>
 <body>
-    <h1>FotoBlog</h1>
-    {% block content %}
-    {# page content goes here ... #}
-    {% endblock content %}
-    {% if user.is_authenticated %}
-        <a href="{% url 'authentication:logout' %}"><button>Logout</button></a>
-    {% endif %}
+    <div class="main">
+        <div class="left-section">
+            <img class="site-logo" src="{% static 'favicon.png' %}" alt="FotoBlog site logo">
+            <h1 class="site-heading">FotoBlog</h1>
+            <hr>
+            {% if user.is_authenticated %}
+            <div id="navbar" class="nav-links">
+                <a class="nav-link" href="{% url 'blog:home' %}">Photo feed</a>
+                <a class="nav-link" href="{% url 'blog:photo_upload' %}">Upload photo</a>
+                <a class="nav-link" href="{% url 'authentication:logout' %}">Logout</a>
+            </div>
+            {% endif %}
+        </div>
+        <div class="right-section">
+            {% block content %}
+            {# page content goes here ... #}
+            {% endblock content %}
+        </div>
+    </div>
+    <script src="https://unpkg.com/flexmasonry/dist/flexmasonry.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>
