@@ -22,9 +22,9 @@
             <hr>
             {% if user.is_authenticated %}
             <div id="navbar" class="nav-links">
-                <a class="nav-link" href="{% url 'blog:home' %}">Photo feed</a>
-                <a class="nav-link" href="{% url 'blog:photo_upload' %}">Upload photo</a>
-                <a class="nav-link" href="{% url 'authentication:logout' %}">Logout</a>
+                <a href="{% url 'blog:home' %}">Photo feed</a>
+                <a href="{% url 'blog:photo_upload' %}">Upload photo</a>
+                <a href="{% url 'authentication:logout' %}">Logout</a>
             </div>
             {% endif %}
         </div>
