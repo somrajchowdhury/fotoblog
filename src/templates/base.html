@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>FotoBlog</title>
-    <link rel="icon" href="{% static 'favicon.png' %}" />
+    <link rel="icon" href="{% static 'image/favicon.png' %}" />
     {# Masonry layout CSS #}
     <link rel="stylesheet" href="https://unpkg.com/flexmasonry/dist/flexmasonry.css">
     {# Custom CSS #}
@@ -17,15 +17,23 @@
 <body>
     <div class="main">
         <div class="left-section">
-            <img class="site-logo" src="{% static 'favicon.png' %}" alt="FotoBlog site logo">
+            <img class="site-logo" src="{% static 'image/favicon.png' %}" alt="FotoBlog site logo">
             <h1 class="site-heading">FotoBlog</h1>
             <hr>
             {% if user.is_authenticated %}
-            <div id="navbar" class="nav-links">
-                <a href="{% url 'blog:home' %}">Photo feed</a>
-                <a href="{% url 'blog:photo_upload' %}">Upload photo</a>
-                <a href="{% url 'authentication:logout' %}">Logout</a>
-            </div>
+                <div id="user-profile-picture">
+                    {% if request.user.profile_photo %}
+                        <img class="avatar" src="{{ request.user.profile_photo.url }}" alt="User's profile picture">
+                    {% else %}
+                        <img class="avatar" src="{% static 'image/default-profile-picture.png' %}" alt="Default profile picture">
+                    {% endif %}
+                    <a href="{% url 'authentication:update_profile_picture' %}"><img src="{% static 'image/edit-profile-picture.png' %}" width="18px" title="Update profile picture"></a>
+                </div>
+                <div id="navbar" class="nav-links">
+                    <a href="{% url 'blog:home' %}">Photo feed</a>
+                    <a href="{% url 'blog:photo_upload' %}">Upload photo</a>
+                    <a href="{% url 'authentication:logout' %}">Logout</a>
+                </div>
             {% endif %}
         </div>
         <div class="right-section">
@@ -36,5 +44,6 @@
     </div>
     <script src="https://unpkg.com/flexmasonry/dist/flexmasonry.js"></script>
     <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/preview-image.js' %}"></script>
 </body>
 </html>
