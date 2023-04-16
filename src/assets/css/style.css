@@ -24,6 +24,14 @@ body {
     padding-right: 10px;
 }
 
+#user-profile-picture {
+    padding-top: 10px;
+}
+
+.avatar {
+    width: 150px;
+}
+
 .right-section {
     width: 80%;
     float: right;
