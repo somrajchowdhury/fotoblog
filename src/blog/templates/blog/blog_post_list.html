@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Blog posts</h3>
+{% for blog_post in blog_posts %}
+    <ul>
+        <li>{{ blog_post.title }}</li>
+    </ul>
+{% endfor %}
+{% endblock content %}

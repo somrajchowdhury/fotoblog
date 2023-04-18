@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
 from django.views.generic.list import ListView
 from .forms import PhotoForm, BlogForm
-from .models import Photo
+from .models import Photo, Blog
 
 class HomeView(LoginRequiredMixin, ListView):
     model = Photo
@@ -56,3 +56,8 @@ class CreateBlogPostView(LoginRequiredMixin, View):
         return render(request, self.template_name,
                       context={'photo_form': photo_form,
                                'blog_form': blog_form})
+
+class BlogPostListView(LoginRequiredMixin, ListView):
+    model = Blog
+    context_object_name = 'blog_posts'
+    template_name = 'blog/blog_post_list.html'
