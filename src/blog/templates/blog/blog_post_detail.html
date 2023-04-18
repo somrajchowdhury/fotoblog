@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>{{ blog_post.title }}</h3>
+<div>
+    <small><strong>Author:</strong> {{ blog_post.author.username }}</small> &bull;
+    <small><strong>Date created:</strong> {{ blog_post.date_created }}</small>
+</div>
+<hr>
+<p>{{ blog_post.content }}</p>
+<figure>
+    <img src="{{ blog_post.photo.image.url }}" width="250px" alt="">
+    <figcaption><small>{{ blog_post.photo.caption }}</small></figcaption>
+</figure>
+<hr>
+<small><strong>Last updated:</strong> {{ blog_post.last_updated }}</small>
+{% endblock content %}

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import View
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from .forms import PhotoForm, BlogForm
 from .models import Photo, Blog
 
@@ -61,3 +62,8 @@ class BlogPostListView(LoginRequiredMixin, ListView):
     model = Blog
     context_object_name = 'blog_posts'
     template_name = 'blog/blog_post_list.html'
+
+class BlogPostDetailView(LoginRequiredMixin, DetailView):
+    model = Blog
+    context_object_name = 'blog_post'
+    template_name = 'blog/blog_post_detail.html'
