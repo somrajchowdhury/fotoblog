@@ -12,6 +12,7 @@ class PhotoForm(forms.ModelForm):
         fields = ('image', 'caption')
 
 class BlogForm(forms.ModelForm):
+    edit = forms.BooleanField(initial=True)
 
     class Meta:
         model = Blog
@@ -19,5 +20,14 @@ class BlogForm(forms.ModelForm):
         widgets = {
             'content': forms.Textarea(attrs={
                 'cols': 50, 'rows': 10
-            })
+            }),
+            'edit': forms.HiddenInput
+        }
+
+class DeleteBlogForm(forms.Form):
+    delete = forms.BooleanField(initial=True)
+
+    class Meta:
+        widgets = {
+            'delete': forms.HiddenInput
         }
